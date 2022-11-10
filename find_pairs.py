@@ -1,4 +1,4 @@
-def find_pairs(addends_list: list, target) -> list:
+def pairs_finder(addends_list: list, target: int) -> list:
     """This function finds pairs of integers from a list that sum to a given value
     Args:
         addends_list: the values to pair
@@ -30,5 +30,5 @@ def find_pairs(addends_list: list, target) -> list:
 if __name__ == '__main__':
     input_list = [1, 9, 5, 0, 20, -4, 12, 16, 7, 12]
     target = 12
-    pairs = find_pairs(input_list.copy(), target)
+    pairs = pairs_finder(input_list.copy(), target)
     print(f'the possible pairs for {target} from the list: {str(input_list)} are:\n{pairs}')
