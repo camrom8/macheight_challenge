@@ -39,8 +39,9 @@ if __name__ == '__main__':
     try:
         input_list = [int(n_string) for n_string in row_list]
     except ValueError:
-        raise SystemExit(f"'{sys.argv[1]}' contains not valid elements. "
-                         f"Argument should be composed of numbers separated by commas")
+        raise SystemExit(f"'{sys.argv[1]}' contains invalid elements. "
+                         f"Argument should be composed of numbers separated by commas "
+                         f"without spaces")
     try:
         target = int(sys.argv[2])
     except ValueError:
