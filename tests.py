@@ -64,5 +64,12 @@ class TestPairFinder(unittest.TestCase):
         double = [1,3]
         self.assertEqual(pairs_finder(double, 3), [])
 
+    def test_sum_to_target(self):
+        data = [random.randint(-1000,1000) for _ in range(10000)]
+        target = random.randint(-1000,1000)
+        result = pairs_finder(data, target)
+        for a, b in result:
+            self.assertEqual(target, a+b)
+
 if __name__ == "__main__":
     unittest.main()
