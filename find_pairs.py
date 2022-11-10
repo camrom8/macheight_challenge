@@ -34,10 +34,8 @@ if __name__ == '__main__':
     if len(sys.argv) != 3:
         raise SystemExit(f"Usage: python3 find_pairs <list of unique numbers"
                          f" separated by commas> <target number>")
-
-    row_list = sys.argv[1].strip(',').split(',')
-
     # some validations provided even though redundant by assumptions
+    row_list = sys.argv[1].strip(',').split(',')
     try:
         input_list = [int(n_string) for n_string in row_list]
     except ValueError:
@@ -49,7 +47,7 @@ if __name__ == '__main__':
         raise SystemExit(f"'{sys.argv[2]}' is not a valid argument, it must be an integer")
 
     pairs = pairs_finder(input_list, target)
-    template_output = Template('\t $index), $pair1, $pair2')
+    template_output = Template('\t $index)  $pair1, $pair2')
 
     # print output
     pairs_qty = len(pairs)
