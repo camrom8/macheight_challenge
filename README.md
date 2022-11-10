@@ -25,8 +25,10 @@ This projects was developed in python 3.8, however it should work with python ve
 ### Executing program
 
 * to run the program type the following command
-* python3 find_pairs.py [list of numbers separated by commas without spaces] [target_number]
-example:
+```
+python3 find_pairs.py [list of numbers separated by commas without spaces] [target_number]
+```
+#### example:
 * to find pairs that sum to target of 8 from [-2, 1, 4, 7, 8, 10]
 ```
 python3 find_pairs.py -2,1,4,7,8,10 8
