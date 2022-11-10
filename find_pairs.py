@@ -13,6 +13,11 @@ def pairs_finder(addends_list: list, target: int) -> list:
 
     # create a sort list by using tims sort algorithm O(log n)
     addends_list_sorted = sorted(addends_list)
+
+    # optimization case when target is out of range, given that list is sorted
+    if sum(addends_list_sorted[:2]) > target or sum(addends_list_sorted[-2::]) < target:
+        return []
+
     addends = []
     add_pair = addends.append
     # loop thorough ordered list and find pairs
