@@ -1,3 +1,4 @@
+import sys
 from string import Template
 
 
@@ -30,11 +31,34 @@ def pairs_finder(addends_list: list, target: int) -> list:
 
 
 if __name__ == '__main__':
-    input_list = [1, 9, 5, 0, 20, -4, 12, 16, 7, 12]
-    target = 12
+    if len(sys.argv) != 3:
+        raise SystemExit(f"Usage: python3 find_pairs <list of unique numbers"
+                         f" separated by commas> <target number>")
+
+    row_list = sys.argv[1].strip(',').split(',')
+
+    # some validations provided even though redundant by assumptions
+    try:
+        input_list = [int(n_string) for n_string in row_list]
+    except ValueError:
+        raise SystemExit(f"'{sys.argv[1]}' contains not valid elements. "
+                         f"Argument should be composed of numbers separated by commas")
+    try:
+        target = int(sys.argv[2])
+    except ValueError:
+        raise SystemExit(f"'{sys.argv[2]}' is not a valid argument, it must be an integer")
+
     pairs = pairs_finder(input_list, target)
     template_output = Template('\t $index), $pair1, $pair2')
-    print(f'the possible pairs for {target} from the list: {str(input_list)} are:')
-    # [print("\t",f'{index, pair[0], "and", pair[1]) for index, pair in enumerate(pairs, start=1)]
-    [print(template_output.substitute(index=index, pair1=pair[0], pair2=pair[1]))
-     for index, pair in enumerate(pairs, start=1)]
+
+    # print output
+    pairs_qty = len(pairs)
+    if not pairs_qty:
+        print(f'There are no pairs of numbers that sum to "{target}"'
+              f' in the list: {input_list}')
+    else:
+        print(f'the pair{"s" if pairs_qty > 1 else ""} of numbers that sum to'
+              f' "{target}" from the list: {input_list} {"are" if pairs_qty > 1 else "is"}:')
+
+    for index, pair in enumerate(pairs, start=1):
+        print(template_output.substitute(index=index, pair1=pair[0], pair2=pair[1]))
